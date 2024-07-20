@@ -51,11 +51,14 @@ public class ConnectionInformation
         }
 
         var names = profile.GetNetworkNames();
-        if (names?.Count > 0)
+        if(names != null)
         {
-            networkNames.AddRange(names);
+            foreach (string name in names)
+            {
+                networkNames.Add(name);
+            }
         }
-
+       
         ConnectivityLevel = profile.GetNetworkConnectivityLevel();
 
         switch (ConnectivityLevel)
